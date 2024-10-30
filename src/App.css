@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+
+*{
+  font-family: 'Arial', sans-serif; 
+  background-image: "public/images/background-image.jpg"
+
+}
+body {
+  background-image: url('background-image.jpg');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
+  
+  margin: 20px auto; /* Center the frame horizontally and give it some top margin */
+  padding: 20px; /* Inner padding for the frame */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center align children horizontally */
 }
 
-.App-link {
-  color: #61dafb;
+.app-title {
+    
+    font-size: 2rem; /* Large font size for emphasis */
+    color: #fbfcfc; /* A beautiful blue color */
+    text-align: center; /* Center the title */ 
+    margin: 20px 0; /* Add some space around the title */
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+  }
+  
+
+/* Search Bar */
+.search-bar-container {
+  display: flex; /* Align children in a row */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Make full width */
+  max-width: 500px; /* Adjust max-width to make it wider */
+  margin: 20px auto; /* Center the search bar */
+  border-radius: 25px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  background-color: #f7f7f7; /* Light background color */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.city-input {
+  flex: 1; /* Make input take up available space */
+  padding: 10px 20px; /* Inner spacing */
+  border: none; /* Remove border */
+  border-radius: 25px 0 0 25px; /* Rounded corners on the left */
+  font-size: 16px; /* Font size */
+  outline: none; /* Remove outline on focus */
+  transition: background-color 0.3s ease; /* Smooth background transition */
 }
+
+.city-input::placeholder {
+  color: #aaa; /* Placeholder color */
+}
+
+.city-input:focus {
+  background-color: #fff; /* Change background on focus */
+}
+
+.search-button {
+  padding: 10px 20px; /* Inner spacing */
+  border: none; /* Remove default border */
+  border-radius: 0 25px 25px 0; /* Rounded corners on the right */
+  background-color: #b78181; /* Primary button color */
+  color: white; /* Button text color */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.search-button:hover {
+  background-color: #603939; /* Darker button color on hover */
+}
+
+.search-button:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+.search-bar-container.error {
+  border: 2px solid #ff4d4d; /* Red border for error state */
+}
+/* End Search Bar */
+
+/* Toogle from F to C*/
+.temperature-unit-button {
+  width: 30%; /* Fixed width to prevent resizing */
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #b78181;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.temperature-unit-button:hover {
+  background-color: #b78181;
+}
+/* End Toogle from F to C*/
+
+
+/* Error Message */
+
+.error-message {
+  color: #d72121; /* Red color for error */
+  font-size: 16px; /* Slightly smaller font */
+  margin-top: 5px;
+}
+
+/* End Error Message */
