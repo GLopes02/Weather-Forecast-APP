@@ -1,0 +1,27 @@
+/* Toogle from F to C*/
+.temperature-unit-button {
+    font-size: 1.3rem;
+    padding: 10;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: inline-flex;
+    padding-top: 5%;
+  }
+  
+  .temperature-unit-button span {
+    padding: 0 4px;
+    font-weight: 400;
+    color: #666; /* Light gray color for inactive unit */
+    transition: color 0.3s ease;
+  }
+  
+  .temperature-unit-button span.active {
+    color: #333; /* Dark color for the active unit */
+    font-weight: bold;
+  }
+  
+  .temperature-unit-button span:not(.active) {
+    color: #aaa; /* Lighter gray for inactive unit */
+  }

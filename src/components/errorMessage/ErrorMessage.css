@@ -1,0 +1,5 @@
+.error-message {
+    color: #d72121; /* Red color for error */
+    font-size: 16px; /* Slightly smaller font */
+    margin-top: 5px;
+  }

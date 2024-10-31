@@ -1,7 +1,10 @@
 import React from "react";
-import ToggleSwitch from "./ToggleSwitch";
-import WeatherImageMapper from "./WeatherImageMapper";
-import { WeatherApiResponse } from "./WeatherInfo";
+import ToggleSwitch from "../temperatureToggle/ToggleSwitch";
+import WeatherImageMapper from "../mappers/WeatherImageMapper";
+import { WeatherApiResponse } from "../../models/WeatherInfo";
+import './WeatherForecast.css';
+import { getDayOfWeek } from './DateUtils';
+import TemperatureDisplay from './TemperatureDisplay'; // Import the new TemperatureDisplay
 
 interface WeatherForecastProps {
   weatherInfo: WeatherApiResponse;
@@ -10,37 +13,6 @@ interface WeatherForecastProps {
   toggleTemperatureUnit: () => void;
   celsiusToFahrenheit: (celsius: number) => number;
 }
-
-function getDayOfWeek(dateString: string) {
-  const [day, month, year] = dateString.split("/").map(Number);
-  const date = new Date(year, month - 1, day);
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  return daysOfWeek[date.getDay()];
-}
-
-const TemperatureDisplay: React.FC<{
-  temp: number;
-  isCelsius: boolean;
-  celsiusToFahrenheit: (celsius: number) => number;
-  className?: string; // Optional className for styling
-}> = ({ temp, isCelsius, celsiusToFahrenheit, className }) => {
-  const convertedTemp = isCelsius
-    ? (temp - 273.15).toFixed(0)
-    : celsiusToFahrenheit(temp - 273.15).toFixed(0);
-  return (
-    <span className={className}>
-      {convertedTemp}°{isCelsius ? "C" : "F"}
-    </span>
-  );
-};
 
 const WeatherForecast: React.FC<WeatherForecastProps> = ({
   weatherInfo,

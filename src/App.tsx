@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { WeatherApiResponse } from "./components/WeatherInfo";
-import ToggleSwitch from "./components/ToggleSwitch";
+import { WeatherApiResponse } from "./models/WeatherInfo";
+import ToggleSwitch from "./components/temperatureToggle/ToggleSwitch";
 import "./App.css";
-import WeatherImageMapper from "./components/WeatherImageMapper";
-import SearchBar from "./components/SearchBar";
-import ErrorMessage from "./components/ErrorMessage";
-import WeatherForecast from "./components/WeatherForecast";
+import WeatherImageMapper from "./components/mappers/WeatherImageMapper";
+import SearchBar from "./components/searchBar/SearchBar";
+import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import WeatherForecast from "./components/weatherForecast/WeatherForecast";
 
 function App() {
   const [city, setCity] = useState<string>("");
