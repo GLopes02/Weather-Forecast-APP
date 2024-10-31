@@ -86,8 +86,8 @@ function App() {
       dailyForecasts[date].avgHumidity =
         dailyForecasts[date].humiditySum / dailyForecasts[date].count;
 
-    dailyForecasts[date].avgMinTemp = dailyForecasts[date].minTemp;
-    dailyForecasts[date].avgMaxTemp = dailyForecasts[date].maxTemp;
+      dailyForecasts[date].avgMinTemp = dailyForecasts[date].minTemp;
+      dailyForecasts[date].avgMaxTemp = dailyForecasts[date].maxTemp;
     });
 
     return dailyForecasts;
@@ -108,10 +108,8 @@ function App() {
   return (
     <div className="app-container">
       <h1 className="app-title">World City Forecast</h1>
-
       <SearchBar city={city} setCity={setCity} fetchWeather={fetchWeather} />
       <ErrorMessage error={error} />
-
       {weatherInfo && (
         <WeatherForecast
           weatherInfo={weatherInfo}

@@ -9,7 +9,8 @@ interface ToggleSwitchProps {
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ isOn, handleToggle }) => {
   return (
     <button className="temperature-unit-button" onClick={handleToggle}>
-      {isOn ? "°C" : "°F"}
+      <span className={isOn ? "active" : ""}>°C</span> | 
+      <span className={!isOn ? "active" : ""}>°F</span>
     </button>
   );
 };

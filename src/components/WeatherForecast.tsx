@@ -13,7 +13,7 @@ interface WeatherForecastProps {
 
 function getDayOfWeek(dateString: string) {
   const [day, month, year] = dateString.split("/").map(Number);
-  const date = new Date(year, month - 1, day); // JavaScript months are zero-indexed (0 = January)
+  const date = new Date(year, month - 1, day);
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -25,6 +25,22 @@ function getDayOfWeek(dateString: string) {
   ];
   return daysOfWeek[date.getDay()];
 }
+
+const TemperatureDisplay: React.FC<{
+  temp: number;
+  isCelsius: boolean;
+  celsiusToFahrenheit: (celsius: number) => number;
+  className?: string; // Optional className for styling
+}> = ({ temp, isCelsius, celsiusToFahrenheit, className }) => {
+  const convertedTemp = isCelsius
+    ? (temp - 273.15).toFixed(0)
+    : celsiusToFahrenheit(temp - 273.15).toFixed(0);
+  return (
+    <span className={className}>
+      {convertedTemp}°{isCelsius ? "C" : "F"}
+    </span>
+  );
+};
 
 const WeatherForecast: React.FC<WeatherForecastProps> = ({
   weatherInfo,
@@ -39,34 +55,24 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
 
   return (
     <div>
-      <div className="city-name-and-toggle">
+      <div className="daily-weather-header-city-details">
         <h2>
-          Today's weather in {weatherInfo.city.name}, {weatherInfo.city.country}
+          {weatherInfo.city.name}, {weatherInfo.city.country}
         </h2>
-        <ToggleSwitch isOn={isCelsius} handleToggle={toggleTemperatureUnit} />
-      </div>
-      <div className="main-forecast-container">
-        <p>
-          Average Temperature:{" "}
-          {isCelsius
-            ? (dailyForecasts[firstDay].avgTemp - 273.15).toFixed(2) + "°C"
-            : celsiusToFahrenheit(
-                dailyForecasts[firstDay].avgTemp - 273.15
-              ).toFixed(2) + "°F"}
-        </p>
-        <p>
-          Average Feels Like:{" "}
-          {isCelsius
-            ? (dailyForecasts[firstDay].avgFeelsLike - 273.15).toFixed(2) + "°C"
-            : celsiusToFahrenheit(
-                dailyForecasts[firstDay].avgFeelsLike - 273.15
-              ).toFixed(2) + "°F"}
-        </p>
+        <h3>{getDayOfWeek(firstDay)}</h3>
 
-        <p>Weather: {dailyForecasts[firstDay].weather.description}</p>
-        <WeatherImageMapper
-          description={dailyForecasts[firstDay].weather.icon}
-        />
+        <div className="daily-weather-info-row">
+          <WeatherImageMapper
+            description={dailyForecasts[firstDay].weather.icon}
+          />
+          <div className="daily-weather-current-temperature">
+            <h2>30</h2>
+            <ToggleSwitch
+              isOn={isCelsius}
+              handleToggle={toggleTemperatureUnit}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="forecast-container">
@@ -78,23 +84,20 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
             />
 
             <div className="forecast-card-temp-range">
-              <span className="forecast-card-temp-min">
-                {isCelsius
-                  ? (dailyForecasts[date].avgMinTemp - 273.15).toFixed(0) + "°C"
-                  : celsiusToFahrenheit(
-                      dailyForecasts[date].avgMinTemp - 273.15
-                    ).toFixed(0) + "°F"}
-              </span>
+              <TemperatureDisplay
+                temp={dailyForecasts[date].avgMinTemp}
+                isCelsius={isCelsius}
+                celsiusToFahrenheit={celsiusToFahrenheit}
+                className="forecast-card-temp-min"
+              />
 
-              <span className="forecast-card-temp-max">
-                {isCelsius
-                  ? (dailyForecasts[date].avgMaxTemp - 273.15).toFixed(0) + "°C"
-                  : celsiusToFahrenheit(
-                      dailyForecasts[date].avgMaxTemp - 273.15
-                    ).toFixed(0) + "°F"}
-              </span>
+              <TemperatureDisplay
+                temp={dailyForecasts[date].avgMaxTemp}
+                isCelsius={isCelsius}
+                celsiusToFahrenheit={celsiusToFahrenheit}
+                className="forecast-card-temp-max"
+              />
             </div>
-            
           </div>
         ))}
       </div>

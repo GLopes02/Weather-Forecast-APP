@@ -90,23 +90,33 @@ body {
 
 /* Toogle from F to C*/
 .temperature-unit-button {
-  width: 10%; /* Fixed width to prevent resizing */
-  font-size: 16px;
-  padding: 5px;
-  border-radius: 15px;
-  background-color: #b78181;
-  color: #fff;
+  font-size: 1.3rem;
+  padding: 10;
+  background: none;
   border: none;
+  color: #333;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  display: inline-flex;
+  padding-top: 5%;
 }
 
-.temperature-unit-button:hover {
-  background-color: #ee7f7f;
-
+.temperature-unit-button span {
+  padding: 0 4px;
+  font-weight: 400;
+  color: #666; /* Light gray color for inactive unit */
+  transition: color 0.3s ease;
 }
 
-.city-name-and-toggle {
+.temperature-unit-button span.active {
+  color: #333; /* Dark color for the active unit */
+  font-weight: bold;
+}
+
+.temperature-unit-button span:not(.active) {
+  color: #aaa; /* Lighter gray for inactive unit */
+}
+
+.city-name {
   display: flex;                  /* Use flexbox */
   color: #040404;
   justify-content: space-between; /* Distribute space between items */
@@ -114,14 +124,6 @@ body {
   background-color: pink;
   padding-bottom: 0;
 }
-
-.city-name-and-toggle h2 {
-  margin: 0;                     
-  font-size: 1.4rem;             /* Adjust the font size as needed */
-}
-
-/* End Toogle from F to C*/
-
 
 /* Error Message */
 
@@ -136,11 +138,49 @@ body {
 
 
 /* Main Forecast card */
-.main-forecast-container{
-background-color: red;
+
+.daily-weather-header-city-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  
 }
 
-/* End Main Forecast card */
+.daily-weather-header-city-details h2 {
+  font-size: 1.4rem;
+}
+
+.daily-weather-header-city-details h3 {
+  font-size: 1.2rem;
+  margin: 0px 0;
+  color: #666; /* Optional: a softer color for the day */
+}
+
+.daily-weather-info-row {
+  display: flex;
+  align-items: center;
+}
+
+.daily-weather-info-row img {
+  width: 60px; /* Fixed size for weather icon */
+  height: auto;
+  margin-right: 10px; /* Space between icon and temperature */
+  
+}
+
+.daily-weather-current-temperature {
+  display: flex;
+  align-items:flex-start;
+}
+
+.daily-weather-current-temperature h2 {
+  font-size: 3rem;
+  margin: 0;
+  color: #333;
+}
+
+
+/* FORECAST SIDE BY SIDE CARDS */
 .forecast-container {
   display: flex;                               /* Horizontal alignment */
   flex-wrap: wrap;                             /* Wrap to new line if needed */
