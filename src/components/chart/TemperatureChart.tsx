@@ -2,25 +2,28 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import './TemperatureChart.css';
 
-// Mock data
-const mockData = [
-  { time: '00:00', temperature: 285.15 },
-  { time: '03:00', temperature: 287.15 },
-  { time: '06:00', temperature: 290.15 },
-  { time: '09:00', temperature: 292.15 },
-  { time: '12:00', temperature: 295.15 },
-  { time: '15:00', temperature: 293.15 },
-  { time: '18:00', temperature: 290.15 },
-  { time: '21:00', temperature: 288.15 },
-];
+// Define the type for hourly data
+interface HourlyData {
+  time: string; // Format: 'HH:mm'
+  temp: number; // Temperature in Kelvin
+}
+
+interface TemperatureChartProps {
+  hourlyData: HourlyData[]; // Array of hourly data
+  isCelsius: boolean; // Flag to indicate if temperature should be in Celsius
+  celsiusToFahrenheit: (celsius: number) => number; // Function to convert Celsius to Fahrenheit
+}
 
 // Function to convert Kelvin to Celsius
-const convertToCelsius = (kelvin: number): number => parseFloat((kelvin - 273.15).toFixed(2));
+const convertToCelsius = (kelvin: number): number => parseFloat((kelvin - 273.15).toFixed(0));
 
-const TemperatureChart: React.FC = () => {
-  const chartData = mockData.map((entry) => ({
+const TemperatureChart: React.FC<TemperatureChartProps> = ({ hourlyData, isCelsius, celsiusToFahrenheit }) => {
+  // Prepare chart data
+  const chartData = hourlyData.map((entry) => ({
     time: entry.time,
-    temperature: convertToCelsius(entry.temperature),
+    temperature: isCelsius
+      ? convertToCelsius(entry.temp) // Convert to Celsius if needed
+      : celsiusToFahrenheit(convertToCelsius(entry.temp)), // Convert to Fahrenheit if not Celsius
   }));
 
   return (
@@ -30,12 +33,10 @@ const TemperatureChart: React.FC = () => {
         <XAxis 
           dataKey="time" 
           tick={{ dy: 10 }} 
+          tickFormatter={(time: string) => time.substring(0, 5)} 
         />
-        <YAxis 
-          domain={['auto', 'auto']} 
-          tick={{ dx: -10 }} 
-        />
-        <Tooltip formatter={(value: number) => [`${value} °C`, 'Temperature']} />
+        <YAxis domain={['auto', 'auto']} tick={{ dx: -10 }} />
+        <Tooltip formatter={(value: number) => [`${value.toFixed(0)} °${isCelsius ? 'C' : 'F'}`, 'Temperature']} />
         <Line type="monotone" dataKey="temperature" stroke="#381515" activeDot={{ r: 8 }} />
       </LineChart>
     </ResponsiveContainer>

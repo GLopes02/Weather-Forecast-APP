@@ -61,6 +61,7 @@ function App() {
           minTemp: forecast.main.temp_min,
           maxTemp: forecast.main.temp_max,
           weather: forecast.weather[0],
+          hourlyData: []
         };
       }
 
@@ -75,6 +76,10 @@ function App() {
       if (forecast.main.temp_max > dailyForecasts[date].maxTemp) {
         dailyForecasts[date].maxTemp = forecast.main.temp_max;
       }
+      dailyForecasts[date].hourlyData.push({
+        time: forecast.dt_txt.split(' ')[1],      // e.g., "2024-11-01 03:00:00"
+        temp: forecast.main.temp,    // temperature value in Kelvin
+      });
     });
 
     // Calculate averages
