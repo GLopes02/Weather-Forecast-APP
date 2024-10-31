@@ -33,6 +33,7 @@ function App() {
       })
       .then((data: WeatherApiResponse) => {
         setWeatherInfo(data);
+        console.log(data);
         setError(null);
         setCity("");
       })
@@ -57,6 +58,8 @@ function App() {
           feelsLikeSum: 0,
           humiditySum: 0,
           count: 0,
+          minTemp: forecast.main.temp_min,
+          maxTemp: forecast.main.temp_max,
           weather: forecast.weather[0],
         };
       }
@@ -65,6 +68,13 @@ function App() {
       dailyForecasts[date].feelsLikeSum += forecast.main.feels_like;
       dailyForecasts[date].humiditySum += forecast.main.humidity;
       dailyForecasts[date].count += 1;
+      // Update min and max temps
+      if (forecast.main.temp_min < dailyForecasts[date].minTemp) {
+        dailyForecasts[date].minTemp = forecast.main.temp_min;
+      }
+      if (forecast.main.temp_max > dailyForecasts[date].maxTemp) {
+        dailyForecasts[date].maxTemp = forecast.main.temp_max;
+      }
     });
 
     // Calculate averages
@@ -75,6 +85,9 @@ function App() {
         dailyForecasts[date].feelsLikeSum / dailyForecasts[date].count;
       dailyForecasts[date].avgHumidity =
         dailyForecasts[date].humiditySum / dailyForecasts[date].count;
+
+    dailyForecasts[date].avgMinTemp = dailyForecasts[date].minTemp;
+    dailyForecasts[date].avgMaxTemp = dailyForecasts[date].maxTemp;
     });
 
     return dailyForecasts;

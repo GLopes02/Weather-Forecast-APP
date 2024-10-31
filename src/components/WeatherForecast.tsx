@@ -1,13 +1,29 @@
 import React from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import WeatherImageMapper from "./WeatherImageMapper";
+import { WeatherApiResponse } from "./WeatherInfo";
 
 interface WeatherForecastProps {
-  weatherInfo: any; 
+  weatherInfo: WeatherApiResponse;
   dailyForecasts: { [key: string]: any };
   isCelsius: boolean;
   toggleTemperatureUnit: () => void;
   celsiusToFahrenheit: (celsius: number) => number;
+}
+
+function getDayOfWeek(dateString: string) {
+  const [day, month, year] = dateString.split("/").map(Number);
+  const date = new Date(year, month - 1, day); // JavaScript months are zero-indexed (0 = January)
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return daysOfWeek[date.getDay()];
 }
 
 const WeatherForecast: React.FC<WeatherForecastProps> = ({
@@ -18,59 +34,67 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
   celsiusToFahrenheit,
 }) => {
   const dates = Object.keys(dailyForecasts);
-  const firstDay = dates[0];
-  const remainingDays = dates.slice(1); // Separate the first day from the rest
+  const firstDay = dates[0]; // Get the first day
+  const remainingDays = dates.slice(1); // Get the next five days
 
   return (
-    <div style={{ display: "flex" }}>
-      {/* Main forecast display for the first day */}
-      <div>
+    <div>
+      <div className="city-name-and-toggle">
         <h2>
-          {weatherInfo.city.name}, {weatherInfo.city.country}
+          Today's weather in {weatherInfo.city.name}, {weatherInfo.city.country}
         </h2>
         <ToggleSwitch isOn={isCelsius} handleToggle={toggleTemperatureUnit} />
-        <div>
-          <h3>{firstDay}</h3>
-          <p>
-            Average Temperature:{" "}
-            {isCelsius
-              ? (dailyForecasts[firstDay].avgTemp - 273.15).toFixed(2) + "°C"
-              : celsiusToFahrenheit(
-                  dailyForecasts[firstDay].avgTemp - 273.15
-                ).toFixed(2) + "°F"}
-          </p>
-          <p>
-            Average Feels Like:{" "}
-            {isCelsius
-              ? (dailyForecasts[firstDay].avgFeelsLike - 273.15).toFixed(2) +
-                "°C"
-              : celsiusToFahrenheit(
-                  dailyForecasts[firstDay].avgFeelsLike - 273.15
-                ).toFixed(2) + "°F"}
-          </p>
-          <p>Weather: {dailyForecasts[firstDay].weather.description}</p>
-          <WeatherImageMapper
-            description={dailyForecasts[firstDay].weather.description}
-          />
-        </div>
+      </div>
+      <div className="main-forecast-container">
+        <p>
+          Average Temperature:{" "}
+          {isCelsius
+            ? (dailyForecasts[firstDay].avgTemp - 273.15).toFixed(2) + "°C"
+            : celsiusToFahrenheit(
+                dailyForecasts[firstDay].avgTemp - 273.15
+              ).toFixed(2) + "°F"}
+        </p>
+        <p>
+          Average Feels Like:{" "}
+          {isCelsius
+            ? (dailyForecasts[firstDay].avgFeelsLike - 273.15).toFixed(2) + "°C"
+            : celsiusToFahrenheit(
+                dailyForecasts[firstDay].avgFeelsLike - 273.15
+              ).toFixed(2) + "°F"}
+        </p>
+
+        <p>Weather: {dailyForecasts[firstDay].weather.description}</p>
+        <WeatherImageMapper
+          description={dailyForecasts[firstDay].weather.icon}
+        />
       </div>
 
-      {/* Next 5  days */}
-      <div>
-        <h3>Upcoming Days</h3>
+      <div className="forecast-container">
         {remainingDays.map((date) => (
-          <div key={date}>
-            <h4>{date}</h4>
-            <p>
-              {isCelsius
-                ? (dailyForecasts[date].avgTemp - 273.15).toFixed(2) + "°C"
-                : celsiusToFahrenheit(
-                    dailyForecasts[date].avgTemp - 273.15
-                  ).toFixed(2) + "°F"}
-            </p>
+          <div className="forecast-card" key={date}>
+            <h3 className="forecast-card-title">{getDayOfWeek(date)}</h3>
             <WeatherImageMapper
-              description={dailyForecasts[date].weather.description}
+              description={dailyForecasts[date].weather.icon}
             />
+
+            <div className="forecast-card-temp-range">
+              <span className="forecast-card-temp-min">
+                {isCelsius
+                  ? (dailyForecasts[date].avgMinTemp - 273.15).toFixed(0) + "°C"
+                  : celsiusToFahrenheit(
+                      dailyForecasts[date].avgMinTemp - 273.15
+                    ).toFixed(0) + "°F"}
+              </span>
+
+              <span className="forecast-card-temp-max">
+                {isCelsius
+                  ? (dailyForecasts[date].avgMaxTemp - 273.15).toFixed(0) + "°C"
+                  : celsiusToFahrenheit(
+                      dailyForecasts[date].avgMaxTemp - 273.15
+                    ).toFixed(0) + "°F"}
+              </span>
+            </div>
+            
           </div>
         ))}
       </div>
