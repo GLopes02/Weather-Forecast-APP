@@ -15,11 +15,10 @@
 .daily-weather-left {
   display: flex; /* Flexbox layout */
   align-items: center; /* Align items to the top */
-  padding: auto;
   height: 100%;
 }
 .daily-weather-header-toggle {
-  height: 50%;
+  height: 50%; /* Use 50% to stay on top*/
   align-items: flex-start;
 }
 

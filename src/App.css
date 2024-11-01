@@ -22,14 +22,51 @@ body {
 }
 
 .app-title {
-    
-    font-size: 3rem; /* Large font size for emphasis */
-    color: #fbfcfc; /* A beautiful blue color */
-    text-align: center; /* Center the title */ 
-    margin: 10px 0; /* Add some space around the title */
-    padding: 10px; /* Add padding for better spacing */
-    border-radius: 10px; /* Rounded corners */
-    transition: transform 0.3s; /* Smooth transition for hover effect */
+  font-size: 5vw; /* Large font size for emphasis */
+  color: #fbfcfc; /* A beautiful blue color */
+  text-align: center; /* Center the title */ 
+  margin: 10px 0; /* Add some space around the title */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Media Queries for Different Screen Sizes */
+@media (max-width: 1200px) {
+  .app-title {
+    font-size: 4vw; /* Adjust font size for screens up to 1200px */
   }
+}
+
+@media (max-width: 992px) {
+  .app-title {
+    font-size: 3vw; /* Adjust font size for screens up to 992px */
+  }
+}
+
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 4vw; /* Adjust font size for screens up to 768px */
+  }
+}
+
+@media (max-width: 600px) {
+  .app-title {
+    font-size: 6vw; /* Further adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 6vw; /* Further adjust font size for very small screens */
+  }
+}
+
+@media (max-width: 360px) {
+  .app-title {
+    font-size: 6vw; /* Further adjust font size for very small screens */
+  }
+}
+
 
   

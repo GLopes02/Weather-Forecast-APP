@@ -1,54 +1,113 @@
 /* Search Bar */
 .search-bar-container {
-    display: flex; /* Align children in a row */
-    align-items: center; /* Center vertically */
-    width: 100%; /* Make full width */
-    max-width: 500px; /* Adjust max-width to make it wider */
-    margin: 10px auto; /* Center the search bar */
-    border-radius: 25px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow for rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    background-color: #f7f7f7; /* Light background color */
-  }
-  
-  .city-input {
-    flex: 1; /* Make input take up available space */
-    padding: 10px 20px; /* Inner spacing */
-    border: none; /* Remove border */
-    border-radius: 25px 0 0 25px; /* Rounded corners on the left */
-    font-size: 16px; /* Font size */
-    outline: none; /* Remove outline on focus */
-    transition: background-color 0.3s ease; /* Smooth background transition */
-  }
-  
-  .city-input::placeholder {
-    color: #aaa; /* Placeholder color */
-  }
-  
-  .city-input:focus {
-    background-color: #fff; /* Change background on focus */
-  }
-  
+  display: flex; /* Align children in a row */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Make full width */
+  max-width: 500px; /* Limit maximum width */
+  margin: 10px auto; /* Center the search bar */
+  border-radius: 25px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  background-color: #f7f7f7; /* Light background color */
+}
+
+.city-input {
+  flex: 1; /* Make input take up available space */
+  padding: 10px 15px; /* Inner spacing */
+  border: none; /* Remove border */
+  border-radius: 25px 0 0 25px; /* Rounded corners on the left */
+  font-size: 1.2rem; /* Set a base font size */
+  min-width: 150px; /* Set a minimum width for the input */
+  outline: none; /* Remove outline on focus */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.city-input::placeholder {
+  color: #aaa; /* Placeholder color */
+  font-size: 1rem; /* Smaller placeholder font size */
+}
+
+.city-input:focus {
+  background-color: #fff; /* Change background on focus */
+}
+
+.search-button {
+  padding: 10px 15px; /* Inner spacing */
+  border: none; /* Remove default border */
+  border-radius: 0 25px 25px 0; /* Rounded corners on the right */
+  background-color: #b78181; /* Primary button color */
+  color: white; /* Button text color */
+  font-size: 1.2rem; /* Set a base font size */
+  min-width: 80px; /* Set a minimum width for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.search-button:hover {
+  background-color: #603939; /* Darker button color on hover */
+}
+
+.search-button:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+.search-bar-container.error {
+  border: 2px solid #ff4d4d; /* Red border for error state */
+}
+
+/* Media Queries for Different Screen Sizes */
+@media (max-width: 1200px) {
+  .city-input,
   .search-button {
-    padding: 10px 20px; /* Inner spacing */
-    border: none; /* Remove default border */
-    border-radius: 0 25px 25px 0; /* Rounded corners on the right */
-    background-color: #b78181; /* Primary button color */
-    color: white; /* Button text color */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth background transition */
+    font-size: 1.1rem; /* Adjust font size for screens up to 1200px */
   }
-  
-  .search-button:hover {
-    background-color: #603939; /* Darker button color on hover */
+}
+
+@media (max-width: 992px) {
+  .city-input,
+  .search-button {
+    font-size: 1rem; /* Adjust font size for screens up to 992px */
   }
-  
-  .search-button:focus {
-    outline: none; /* Remove outline on focus */
+}
+
+@media (max-width: 768px) {
+  .city-input {
+    font-size: 1rem; /* Adjust font size for screens up to 768px */
   }
-  
-  .search-bar-container.error {
-    border: 2px solid #ff4d4d; /* Red border for error state */
+  .search-button {
+    font-size: 1rem; /* Keep button font size consistent */
+    min-width: 70px; /* Minimum width to keep it visible */
   }
-  /* End Search Bar */
+}
+
+@media (max-width: 600px) {
+  .city-input {
+    font-size: 0.9rem; /* Further adjust font size for smaller screens */
+  }
+  .search-button {
+    font-size: 0.9rem; /* Adjust button font size */
+    min-width: 60px; /* Keep button visible */
+  }
+}
+
+@media (max-width: 480px) {
+  .city-input {
+    font-size: 0.8rem; /* Further adjust font size for very small screens */
+  }
+  .search-button {
+    font-size: 0.8rem; /* Further adjust button font size */
+    min-width: 50px; /* Ensure the button remains visible */
+  }
+}
+
+@media (max-width: 360px) {
+  .city-input {
+    font-size: 0.7rem; /* Further adjust font size for very small screens */
+  }
+  .search-button {
+    font-size: 0.7rem; /* Further adjust button font size */
+    min-width: 50px; /* Ensure the button remains visible */
+  }
+}
+
+/* End Search Bar */
