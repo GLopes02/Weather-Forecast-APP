@@ -2,8 +2,8 @@
 *{
   font-family: 'Arial', sans-serif; 
   background-image: "public/images/background-image.jpg"
-
 }
+
 body {
   background-image: url('background-image.jpg');
   background-size: cover; /* Ensure the image covers the entire background */
@@ -23,7 +23,7 @@ body {
 
 .app-title {
     
-    font-size: 2.5rem; /* Large font size for emphasis */
+    font-size: 3rem; /* Large font size for emphasis */
     color: #fbfcfc; /* A beautiful blue color */
     text-align: center; /* Center the title */ 
     margin: 10px 0; /* Add some space around the title */
@@ -31,4 +31,5 @@ body {
     border-radius: 10px; /* Rounded corners */
     transition: transform 0.3s; /* Smooth transition for hover effect */
   }
+
   

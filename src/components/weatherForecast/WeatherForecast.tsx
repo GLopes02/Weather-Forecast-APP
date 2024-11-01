@@ -42,10 +42,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
   const firstDay = dates[0];
   const remainingDays = dates.slice(0, 6);
   const currentTemperature = weatherInfo.list[0].main.temp;
-
-  // State to manage the selected day for the temperature chart
   const [selectedDay, setSelectedDay] = useState<string>(firstDay);
-
   const handleDayClick = (date: string) => {
     setSelectedDay(date);
   };
@@ -67,13 +64,18 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
                 returnValueOnly={true}
               />
             </h2>
-            <ToggleSwitch
-              isOn={isCelsius}
-              handleToggle={toggleTemperatureUnit}
-            />
+            <div className="daily-weather-header-toggle">
+              <ToggleSwitch
+                isOn={isCelsius}
+                handleToggle={toggleTemperatureUnit}
+              />
+            </div>
           </div>
 
-          <div className="daily-weather-header" onClick={() => handleDayClick(firstDay)}>
+          <div
+            className="daily-weather-header"
+            onClick={() => handleDayClick(firstDay)}
+          >
             <p className="city-name-label">
               {weatherInfo.city.name}, {weatherInfo.city.country}
             </p>

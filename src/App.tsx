@@ -77,8 +77,8 @@ function App() {
         dailyForecasts[date].maxTemp = forecast.main.temp_max;
       }
       dailyForecasts[date].hourlyData.push({
-        time: forecast.dt_txt.split(' ')[1],      // e.g., "2024-11-01 03:00:00"
-        temp: forecast.main.temp,    // temperature value in Kelvin
+        time: forecast.dt_txt.split(' ')[1],//"2024-11-01 03:00:00"
+        temp: forecast.main.temp,   
       });
     });
 
@@ -90,7 +90,6 @@ function App() {
         dailyForecasts[date].feelsLikeSum / dailyForecasts[date].count;
       dailyForecasts[date].avgHumidity =
         dailyForecasts[date].humiditySum / dailyForecasts[date].count;
-
       dailyForecasts[date].avgMinTemp = dailyForecasts[date].minTemp;
       dailyForecasts[date].avgMaxTemp = dailyForecasts[date].maxTemp;
     });

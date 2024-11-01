@@ -5,19 +5,24 @@
 }
 
 .daily-weather-info-row {
+  height: 120px;
   display: flex; /* Row alignment */
   justify-content: space-between; /* Space between left and right */
   width: 100%; /* Full width */
+  align-items: center;
 }
 
 .daily-weather-left {
   display: flex; /* Flexbox layout */
-  align-items: flex-start; /* Align items to the top */
+  align-items: center; /* Align items to the top */
+  padding: auto;
+  height: 100%;
+}
+.daily-weather-header-toggle {
+  height: 50%;
+  align-items: flex-start;
 }
 
-.daily-weather-left > * {
-  margin-right: 10px; /* Spacing between elements */
-}
 
 .current-temperature {
   font-size: 4rem; /* Large font size */
@@ -46,36 +51,26 @@
 /* Forecast container and cards */
 .forecast-container {
   display: flex; /* Horizontal alignment */
-  flex-wrap: wrap; /* Wrap if needed */
-  justify-content: space-between; /* Distribute space between cards */
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+  overflow-x: auto; /* Enable horizontal scrolling */
   margin: 0 auto; /* Center the container */
+  padding: 10px; /* Optional: add padding to the container */
+  scrollbar-width: thin; /* Firefox scrollbar */
 }
 
 .forecast-card {
-  flex: 1 1 calc(20% - 10px); /* Width for cards */
-  background: #f9f9f9; /* Card background */
-  border: 1px solid #ddd; /* Card border */
+  flex: 0 0 auto; /* Prevent cards from shrinking */
+  background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Light border with transparency */
   border-radius: 8px; /* Rounded corners */
   padding: 10px; /* Padding for card content */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow */
   margin: 4px; /* Space between cards */
-  min-width: 120px; /* Minimum width for cards */
   box-sizing: border-box; /* Include padding and border in width */
   text-align: center; /* Center-align text */
   transition: transform 0.2s ease; /* Smooth hover effect */
-}
-
-/* Media Queries for Responsive Card Sizing */
-@media (max-width: 768px) {
-  .forecast-card {
-    flex: 1 1 calc(30% - 8px); /* More cards per row on medium screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .forecast-card {
-    flex: 1 1 calc(100% - 8px); /* One card per row on small screens */
-  }
+  backdrop-filter: blur(10px); /* Blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
 }
 
 .forecast-card:hover {
@@ -102,18 +97,25 @@
 }
 
 .forecast-card-temp-container {
-  display: flex; /* Flexbox for alignment */
-  justify-content: space-between; /* Space items evenly */
+  display: flex; /* Align items in a row */
+  justify-content: space-between; /* Space between min and max temperatures */
+  gap: 8px; /* Optional: Space between the min and max boxes */
+  align-items: center; /* Center vertically if needed */
   margin: 10px 0; /* Margin for spacing */
 }
 
 .forecast-card-temp-min,
 .forecast-card-temp-max {
+  display: inline-flex; /* Align items inline with fixed width */
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
   padding: 5px; /* Padding for temperature boxes */
   border-radius: 5px; /* Round corners */
   text-align: center; /* Center the text */
-  width: 60px; /* Fixed width for boxes */
-  margin: 0 5px; /* Margin between boxes */
+  min-width: 60px; /* Minimum width to prevent resizing */
+  margin: 0 8px; /* Margin between boxes */
+  font-size: 1rem; /* Consistent font size */
+  white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .forecast-card-temp-min {
@@ -122,5 +124,30 @@
 }
 
 .forecast-card-temp-max {
-  background-color: #b78181; /* Orange for max temp */
+  background-color: #e48080; /* Orange for max temp */
+  color: white;
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .forecast-card {
+    width: 150px; /* Adjust card width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .forecast-card {
+    width: 120px; /* Further adjust card width for very small screens */
+  }
+
+  .forecast-card-title {
+    font-size: 0.9rem; /* Smaller title font size for mobile */
+  }
+
+  .forecast-card-temp-min,
+  .forecast-card-temp-max {
+    min-width: 50px; /* Adjust minimum width for mobile */
+  }
+}
+
+
