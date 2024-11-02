@@ -1,5 +1,19 @@
 .error-message {
     color: #d72121; /* Red color for error */
-    font-size: 16px; /* Slightly smaller font */
-    margin-top: 5px;
+    font-size: 0.7rem; /* Slightly smaller font */
+    margin-top: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .error-message {
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .error-message {
+      font-size: 1.3rem;
+      margin-top: 20px;
+    }
   }

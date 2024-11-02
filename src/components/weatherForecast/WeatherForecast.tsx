@@ -50,37 +50,36 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
 
   return (
     <div>
-      <div className="daily-weather-header-city-details">
-        <div className="daily-weather-info-row">
-          <div className="daily-weather-left">
-            <WeatherImageMapper
-              description={dailyForecasts[firstDay].weather.icon}
+      <div className="daily-weather-info-row">
+        <div className="daily-weather-left">
+          <WeatherImageMapper
+            description={dailyForecasts[firstDay].weather.icon}
+            className="main-weather-image"
+          />
+          <h2 className="current-temperature">
+            <TemperatureDisplay
+              temp={currentTemperature}
+              isCelsius={isCelsius}
+              celsiusToFahrenheit={celsiusToFahrenheit}
+              className="" // Here the class is empty because you don't want the style
+              returnValueOnly={true}
             />
-            <h2 className="current-temperature">
-              <TemperatureDisplay
-                temp={currentTemperature}
-                isCelsius={isCelsius}
-                celsiusToFahrenheit={celsiusToFahrenheit}
-                className="" // Here the class is empty because you don't want the style
-                returnValueOnly={true}
-              />
-            </h2>
-            <div className="daily-weather-header-toggle">
-              <ToggleSwitch
-                isOn={isCelsius}
-                handleToggle={toggleTemperatureUnit}
-              />
-            </div>
+          </h2>
+          <div className="daily-weather-header-toggle">
+            <ToggleSwitch
+              isOn={isCelsius}
+              handleToggle={toggleTemperatureUnit}
+            />
           </div>
-          <div className="daily-weather-header">
-            <p className="city-name-label">
-              {weatherInfo.city.name}, {weatherInfo.city.country}
-            </p>
-            <p className="week-day-label">{getDayOfWeek(firstDay)}</p>
-            <p className="description-label">
-              {upperCaseInitials(dailyForecasts[firstDay].weather.description)}
-            </p>
-          </div>
+        </div>
+        <div className="daily-weather-right">
+          <p className="city-name-label">
+            {weatherInfo.city.name}, {weatherInfo.city.country}
+          </p>
+          <p className="week-day-label">{getDayOfWeek(firstDay)}</p>
+          <p className="description-label">
+            {upperCaseInitials(dailyForecasts[firstDay].weather.description)}
+          </p>
         </div>
       </div>
 
@@ -92,35 +91,33 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
         />
       </div>
 
-      <div className="forecast-wrapper">
-        <div className="forecast-container">
-          {remainingDays.map((date) => (
-            <div
-              className="forecast-card"
-              key={date}
-              onClick={() => handleDayClick(date)}
-            >
-              <h3 className="forecast-card-title">{getDayOfWeek(date)}</h3>
-              <WeatherImageMapper
-                description={dailyForecasts[date].weather.icon}
+      <div className="forecast-container">
+        {remainingDays.map((date) => (
+          <div
+            className="forecast-card"
+            key={date}
+            onClick={() => handleDayClick(date)}
+          >
+            <h3 className="forecast-card-title">{getDayOfWeek(date)}</h3>
+            <WeatherImageMapper
+              description={dailyForecasts[date].weather.icon}
+            />
+            <div className="forecast-card-temp-range">
+              <TemperatureDisplay
+                temp={dailyForecasts[date].avgMaxTemp}
+                isCelsius={isCelsius}
+                celsiusToFahrenheit={celsiusToFahrenheit}
+                className="forecast-card-temp-max"
               />
-              <div className="forecast-card-temp-range">
-                <TemperatureDisplay
-                  temp={dailyForecasts[date].avgMaxTemp}
-                  isCelsius={isCelsius}
-                  celsiusToFahrenheit={celsiusToFahrenheit}
-                  className="forecast-card-temp-max"
-                />
-                <TemperatureDisplay
-                  temp={dailyForecasts[date].avgMinTemp}
-                  isCelsius={isCelsius}
-                  celsiusToFahrenheit={celsiusToFahrenheit}
-                  className="forecast-card-temp-min"
-                />
-              </div>
+              <TemperatureDisplay
+                temp={dailyForecasts[date].avgMinTemp}
+                isCelsius={isCelsius}
+                celsiusToFahrenheit={celsiusToFahrenheit}
+                className="forecast-card-temp-min"
+              />
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

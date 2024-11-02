@@ -1,13 +1,10 @@
-/* Toogle from F to C*/
 .temperature-unit-button {
-    font-size: 1.3rem;
-    padding: 10;
+    font-size: 1.2rem; 
     background: none;
     border: none;
     color: #333;
     cursor: pointer;
-    display: inline-flex;
-    padding-top: 5%;
+    padding-bottom: 35px;
   }
   
   .temperature-unit-button span {
@@ -24,4 +21,18 @@
   
   .temperature-unit-button span:not(.active) {
     color: #aaa; /* Lighter gray for inactive unit */
+  }
+
+  @media (min-width: 768px) {
+    .temperature-unit-button {
+      font-size: 1.5rem;
+      padding-bottom: 35px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .temperature-unit-button {
+      font-size: 1.5rem;
+      padding-bottom: 35px;
+    }
   }

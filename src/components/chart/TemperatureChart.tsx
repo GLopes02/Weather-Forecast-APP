@@ -28,7 +28,7 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({ hourlyData, isCelsi
 
   return (
    
-    <ResponsiveContainer width="100%">
+    <ResponsiveContainer width="100%"  height={150}>
       <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis 
@@ -38,7 +38,7 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({ hourlyData, isCelsi
         />
         <YAxis domain={['auto', 'auto']} tick={{ dx: -10 }} />
         <Tooltip formatter={(value: number) => [`${value.toFixed(0)} °${isCelsius ? 'C' : 'F'}`, 'Temperature']} />
-        <Line type="monotone" dataKey="temperature" stroke="#381515" activeDot={{ r: 8 }} />
+        <Line type="natural" dataKey="temperature" stroke="#000000" activeDot={{ r: 8 }} />
       </LineChart>
     </ResponsiveContainer>
     

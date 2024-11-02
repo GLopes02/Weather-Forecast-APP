@@ -1,18 +1,20 @@
 import React from "react";
 
-// Define the props type
 interface WeatherImageMapperProps {
   description: string;
+  className?: string; 
 }
+
 const WeatherImageMapper: React.FC<WeatherImageMapperProps> = ({
   description,
+  className = "card-weather-image", 
 }) => {
   return (
     <div>
       <img
-        src={`/images/${description+ ".png"}`}
+        className={className}
+        src={`/images/${description + ".png"}`}
         alt={description}
-        style={{ width: "100px", height: "100px" }}
       />
     </div>
   );

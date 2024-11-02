@@ -1,7 +1,6 @@
 
 *{
   font-family: 'Arial', sans-serif; 
-  background-image: "public/images/background-image.jpg"
 }
 
 body {
@@ -13,59 +12,31 @@ body {
 }
 
 .app-container {
-  margin: 20px auto; /* Center the frame horizontally and give it some top margin */
-  padding: 20px; /* Inner padding for the frame */
   display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center align children horizontally */
+  flex-direction: column;
+  align-items: center; 
 }
 
 .app-title {
-  font-size: 5vw; /* Large font size for emphasis */
-  color: #fbfcfc; /* A beautiful blue color */
-  text-align: center; /* Center the title */ 
-  margin: 10px 0; /* Add some space around the title */
-  padding: 10px; /* Add padding for better spacing */
-  border-radius: 10px; /* Rounded corners */
-  transition: transform 0.3s; /* Smooth transition for hover effect */
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center; 
+  margin-top: 20px; 
 }
 
 /* Media Queries for Different Screen Sizes */
-@media (max-width: 1200px) {
+@media (min-width: 768px) {
   .app-title {
-    font-size: 4vw; /* Adjust font size for screens up to 1200px */
+    font-size: 2.4rem; 
   }
 }
 
-@media (max-width: 992px) {
+@media (min-width: 1024px) {
   .app-title {
-    font-size: 3vw; /* Adjust font size for screens up to 992px */
+    font-size: 3.4rem; 
   }
 }
 
-@media (max-width: 768px) {
-  .app-title {
-    font-size: 4vw; /* Adjust font size for screens up to 768px */
-  }
-}
-
-@media (max-width: 600px) {
-  .app-title {
-    font-size: 6vw; /* Further adjust font size for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .app-title {
-    font-size: 6vw; /* Further adjust font size for very small screens */
-  }
-}
-
-@media (max-width: 360px) {
-  .app-title {
-    font-size: 6vw; /* Further adjust font size for very small screens */
-  }
-}
 
 
   
