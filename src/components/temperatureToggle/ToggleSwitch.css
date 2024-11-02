@@ -10,17 +10,17 @@
   .temperature-unit-button span {
     padding: 0 4px;
     font-weight: 400;
-    color: #666; /* Light gray color for inactive unit */
+    color: #666; 
     transition: color 0.3s ease;
   }
   
   .temperature-unit-button span.active {
-    color: #333; /* Dark color for the active unit */
+    color: #333; 
     font-weight: bold;
   }
   
   .temperature-unit-button span:not(.active) {
-    color: #aaa; /* Lighter gray for inactive unit */
+    color: #aaa; 
   }
 
   @media (min-width: 768px) {

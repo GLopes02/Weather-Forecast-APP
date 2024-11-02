@@ -61,7 +61,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
               temp={currentTemperature}
               isCelsius={isCelsius}
               celsiusToFahrenheit={celsiusToFahrenheit}
-              className="" // Here the class is empty because you don't want the style
+              className="" // Here the class is empty because I don't want the style
               returnValueOnly={true}
             />
           </h2>

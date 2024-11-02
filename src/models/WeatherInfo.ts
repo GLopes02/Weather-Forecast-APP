@@ -1,5 +1,3 @@
-// src/types/WeatherInfo.ts
-
 export interface WeatherDescription {
   id: number;
   main: string;
@@ -69,5 +67,3 @@ export interface WeatherApiResponse {
   list: ForecastItem[];
   city: City;
 }
-
-

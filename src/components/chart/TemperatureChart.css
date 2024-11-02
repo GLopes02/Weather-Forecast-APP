@@ -1,35 +1,33 @@
 .temperature-evolution-graphic {
-    width: 100%; /* Base width for the graphic */
+    width: 100%; 
     height: 150px;
     margin: 0 auto; 
     padding-bottom: 20px;
   }
 
-
 .axis-tick {
-  font-size: 0.5rem; /* Adjust font size */
-  fill: #000; /* Set text color if desired */
+  font-size: 0.5rem;
+  fill: #000; 
 }
 
-  
-  @media (min-width: 768px) {
-    .temperature-evolution-graphic {
-      width: 80%;
-    }
-    .axis-tick {
-      font-size: 1rem;
-    }
+@media (min-width: 768px) {
+  .temperature-evolution-graphic {
+    width: 80%;
   }
+  .axis-tick {
+    font-size: 1rem;
+  }
+}
 
-  @media (min-width: 1024px) {
-    .temperature-evolution-graphic {
-      width: 80%;
-      padding-bottom: 30px;
-    }
-    .axis-tick {
-      font-size: 1.2rem;
-    }
+@media (min-width: 1024px) {
+  .temperature-evolution-graphic {
+    width: 80%;
+    padding-bottom: 30px;
   }
+  .axis-tick {
+    font-size: 1.2rem;
+  }
+}
   
   
 

@@ -1,7 +1,7 @@
 .forecast-container {
   display: flex;
-  gap: 8px; /* Space between cards */
-  scroll-snap-type: x mandatory; /* Smooth snapping for each card */
+  gap: 8px;
+  scroll-snap-type: x mandatory; 
   width: 100%;
 }
 
@@ -38,7 +38,7 @@
   width: 20px;
   margin: 0 4px;
   font-size: 0.4rem;
-  white-space: nowrap; /* Prevents text wrapping */
+  white-space: nowrap;
 }
 
 .forecast-card-temp-min {
