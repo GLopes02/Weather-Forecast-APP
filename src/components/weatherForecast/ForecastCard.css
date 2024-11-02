@@ -1,0 +1,121 @@
+/* Outer wrapper to control container width */
+.forecast-wrapper {
+    width: 90%;
+    max-width: 90%; /* Constrains the width to the screen size */
+    overflow-x: hidden; /* Hide any overflowing content horizontally */
+    margin: 0 auto; /* Center horizontally */
+    padding: 10px; /* Padding for spacing around the container */
+  }
+  
+  /* Scrollable container for forecast cards */
+  .forecast-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Allows horizontal scrolling */
+    gap: 8px; /* Space between cards */
+    scroll-snap-type: x mandatory; /* Smooth snapping scroll */
+    width: 100%;
+  }
+  
+  .forecast-card {
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    width: 180px; /* Set a consistent width for each card */
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.2s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    scroll-snap-align: center; /* Aligns each card centrally when scrolling */
+  }
+  
+  .forecast-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive adjustments for the forecast cards */
+  @media (max-width: 1200px) {
+    .forecast-wrapper {
+      max-width: 90%; /* Shrinks to fit screen */
+    }
+    .forecast-card {
+      width: 160px; /* Shrinks card width */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .forecast-wrapper {
+      max-width: 85%;
+    }
+    .forecast-card {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .forecast-wrapper {
+      max-width: 80%;
+    }
+    .forecast-card {
+      width: 140px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .forecast-wrapper {
+      max-width: 75%;
+    }
+    .forecast-card {
+      width: 130px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .forecast-wrapper {
+      max-width: 70%;
+    }
+    .forecast-card {
+      width: 120px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .forecast-wrapper {
+      max-width: 65%;
+    }
+    .forecast-card {
+      width: 110px;
+    }
+  }
+  
+  /* Optional: Hide scrollbar for cleaner look */
+  .forecast-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+.forecast-card-temp-min,
+.forecast-card-temp-max {
+  display: inline-flex; /* Inline flex for better control */
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 60px; /* Prevent shrinking */
+  margin: 0 8px;
+  font-size: 1rem; /* Visible font size */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.forecast-card-temp-min {
+  background-color: #376fab; /* Blue for min temp */
+  color: white;
+}
+
+.forecast-card-temp-max {
+  background-color: #e48080; /* Orange for max temp */
+  color: white;
+}

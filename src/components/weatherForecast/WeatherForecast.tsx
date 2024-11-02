@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ToggleSwitch from "../temperatureToggle/ToggleSwitch";
 import WeatherImageMapper from "../mappers/WeatherImageMapper";
 import { WeatherApiResponse } from "../../models/WeatherInfo";
-import "./WeatherForecast.css";
+import "./WeatherDetails.css";
+import "./ForecastCard.css";
 import { getDayOfWeek, upperCaseInitials } from "./Utils";
 import TemperatureDisplay from "./TemperatureDisplay";
 import TemperatureChart from "../chart/TemperatureChart";
@@ -71,11 +72,7 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
               />
             </div>
           </div>
-
-          <div
-            className="daily-weather-header"
-            onClick={() => handleDayClick(firstDay)}
-          >
+          <div className="daily-weather-header">
             <p className="city-name-label">
               {weatherInfo.city.name}, {weatherInfo.city.country}
             </p>
@@ -95,33 +92,35 @@ const WeatherForecast: React.FC<WeatherForecastProps> = ({
         />
       </div>
 
-      <div className="forecast-container">
-        {remainingDays.map((date) => (
-          <div
-            className="forecast-card"
-            key={date}
-            onClick={() => handleDayClick(date)} // Add onClick to change the selected day
-          >
-            <h3 className="forecast-card-title">{getDayOfWeek(date)}</h3>
-            <WeatherImageMapper
-              description={dailyForecasts[date].weather.icon}
-            />
-            <div className="forecast-card-temp-range">
-              <TemperatureDisplay
-                temp={dailyForecasts[date].avgMaxTemp}
-                isCelsius={isCelsius}
-                celsiusToFahrenheit={celsiusToFahrenheit}
-                className="forecast-card-temp-max"
+      <div className="forecast-wrapper">
+        <div className="forecast-container">
+          {remainingDays.map((date) => (
+            <div
+              className="forecast-card"
+              key={date}
+              onClick={() => handleDayClick(date)}
+            >
+              <h3 className="forecast-card-title">{getDayOfWeek(date)}</h3>
+              <WeatherImageMapper
+                description={dailyForecasts[date].weather.icon}
               />
-              <TemperatureDisplay
-                temp={dailyForecasts[date].avgMinTemp}
-                isCelsius={isCelsius}
-                celsiusToFahrenheit={celsiusToFahrenheit}
-                className="forecast-card-temp-min"
-              />
+              <div className="forecast-card-temp-range">
+                <TemperatureDisplay
+                  temp={dailyForecasts[date].avgMaxTemp}
+                  isCelsius={isCelsius}
+                  celsiusToFahrenheit={celsiusToFahrenheit}
+                  className="forecast-card-temp-max"
+                />
+                <TemperatureDisplay
+                  temp={dailyForecasts[date].avgMinTemp}
+                  isCelsius={isCelsius}
+                  celsiusToFahrenheit={celsiusToFahrenheit}
+                  className="forecast-card-temp-min"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

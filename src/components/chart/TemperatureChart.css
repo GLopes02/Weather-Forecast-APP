@@ -1,3 +1,51 @@
-.temperature-evolution-graphic{
-    padding: 6px;
-}
+.temperature-evolution-graphic {
+    width: 80%; /* Base width for the graphic */
+    max-width: 100%; /* Ensures it doesn’t exceed container width */
+    height: 300px; /* Default height */
+    margin: auto; /* Center the graphic */
+    padding: 0; /* Reset padding */
+  }
+  
+  @media (max-width: 1200px) {
+    .temperature-evolution-graphic {
+      height: 280px; /* Slightly smaller height for larger screens */
+      width: 80%; /* Maintain width for larger screens */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .temperature-evolution-graphic {
+      height: 250px; /* Slightly smaller height for medium screens */
+      width: 100%; /* Maintain width for medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .temperature-evolution-graphic {
+      height: 200px; /* Smaller height for tablet screens */
+      width: 100%; /* Adjust width for tablet screens */
+      
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .temperature-evolution-graphic {
+      height: 180px; /* Smaller height for smaller tablets */
+      width: 100%; /* Wider width for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .temperature-evolution-graphic {
+      height: 150px; /* Smallest height for mobile screens */
+      width: 100%; /* Maximize width for mobile */
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .temperature-evolution-graphic {
+      height: 120px; /* Adjust height for very small screens */
+      width: 100%; /* Full width for very small screens */
+    }
+  }
+  

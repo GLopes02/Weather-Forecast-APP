@@ -13,7 +13,6 @@ body {
 }
 
 .app-container {
-  
   margin: 20px auto; /* Center the frame horizontally and give it some top margin */
   padding: 20px; /* Inner padding for the frame */
   display: flex;

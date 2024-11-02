@@ -27,8 +27,9 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({ hourlyData, isCelsi
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={chartData} margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
+   
+    <ResponsiveContainer width="100%">
+      <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis 
           dataKey="time" 
@@ -40,6 +41,7 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({ hourlyData, isCelsi
         <Line type="monotone" dataKey="temperature" stroke="#381515" activeDot={{ r: 8 }} />
       </LineChart>
     </ResponsiveContainer>
+    
   );
 };
 

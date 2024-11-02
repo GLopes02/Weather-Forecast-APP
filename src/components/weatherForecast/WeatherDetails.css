@@ -1,0 +1,106 @@
+.daily-weather-header-city-details {
+  display: flex;
+  padding: 0 10px; /* Minimal padding for responsiveness */
+}
+
+.daily-weather-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: red;
+  padding: 5px 0; /* Smaller padding to reduce space */
+}
+
+.daily-weather-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1; /* Allow it to shrink */
+  background-color: green;
+}
+
+.daily-weather-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 1; /* Allow it to shrink */
+  background-color: #e48080;
+}
+
+/* Common styling for text elements */
+.current-temperature {
+  font-size: 3vw; /* Start with responsive font size */
+  margin: 0;
+}
+
+.city-name-label {
+  font-size: 1.5vw;
+  margin: 0;
+}
+
+.week-day-label,
+.description-label {
+  font-size: 1.2vw;
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+
+/* Larger screens */
+@media (max-width: 1200px) {
+  .current-temperature {
+    font-size: 2.5vw;
+  }
+  .city-name-label {
+    font-size: 1.4vw;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .daily-weather-info-row {
+    padding: 2px 0;
+  }
+  .current-temperature {
+    font-size: 2vw;
+  }
+  .city-name-label {
+    font-size: 1.2vw;
+  }
+  .week-day-label, .description-label {
+    font-size: 1vw;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .current-temperature {
+    font-size: 1.6rem;
+  }
+  .city-name-label {
+    font-size: 1.4rem;
+  }
+  .week-day-label, .description-label {
+    font-size: 1.1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .daily-weather-info-row {
+    gap: 5px; /* Reduces space between items on small screens */
+  }
+  .current-temperature {
+    font-size: 1.4rem;
+  }
+  .city-name-label {
+    font-size: 1.2rem;
+  }
+  .week-day-label, .description-label {
+    font-size: 1rem;
+  }
+}
+
+
+
+
