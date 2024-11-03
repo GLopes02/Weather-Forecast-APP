@@ -1,3 +1,5 @@
+## Overview
+
 This is a weather forecast application built with TypeScript, React, and CSS. The app fetches five-day weather data for any given city using the OpenWeatherMap API, providing users with an intuitive and visually appealing forecast overview.
 API endpoint used: api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key} 
 
