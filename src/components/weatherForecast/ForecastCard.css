@@ -3,6 +3,7 @@
   gap: 8px;
   scroll-snap-type: x mandatory; 
   width: 100%;
+  justify-content: center;
 }
 
 .forecast-card {
