@@ -1,0 +1,42 @@
+
+*{
+  font-family: 'Arial', sans-serif; 
+}
+
+body {
+  background-image: url('background-image.jpg');
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.app-title {
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center; 
+  margin-top: 20px; 
+}
+
+/* Media Queries for Different Screen Sizes */
+@media (min-width: 768px) {
+  .app-title {
+    font-size: 2.4rem; 
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-title {
+    font-size: 3.4rem; 
+  }
+}
+
+
+
+  

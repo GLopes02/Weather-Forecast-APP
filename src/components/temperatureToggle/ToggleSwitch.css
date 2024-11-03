@@ -1,0 +1,38 @@
+.temperature-unit-button {
+    font-size: 1.2rem; 
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding-bottom: 35px;
+  }
+  
+  .temperature-unit-button span {
+    padding: 0 4px;
+    font-weight: 400;
+    color: #666; 
+    transition: color 0.3s ease;
+  }
+  
+  .temperature-unit-button span.active {
+    color: #333; 
+    font-weight: bold;
+  }
+  
+  .temperature-unit-button span:not(.active) {
+    color: #aaa; 
+  }
+
+  @media (min-width: 768px) {
+    .temperature-unit-button {
+      font-size: 1.5rem;
+      padding-bottom: 35px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .temperature-unit-button {
+      font-size: 1.5rem;
+      padding-bottom: 35px;
+    }
+  }
