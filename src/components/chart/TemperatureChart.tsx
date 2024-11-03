@@ -42,7 +42,7 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({
         data={chartData}
         margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid stroke="#AAABAA" strokeDasharray="4 4" />
         <XAxis
           dataKey="time"
           tick={{ dy: 10 }}
@@ -56,7 +56,7 @@ const TemperatureChart: React.FC<TemperatureChartProps> = ({
           ]}
         />
         <Line
-          type="natural"
+          type="monotone"
           dataKey="temperature"
           stroke="#000000"
           activeDot={{ r: 8 }}

@@ -30,6 +30,7 @@
 .description-label {
   font-size: 1rem; 
   margin: 0;
+  color:rgb(79, 62, 45);
 }
 
 @media (min-width: 768px) {
